@@ -1,0 +1,42 @@
+<script>
+function calculateTotalPrice() {
+  var quantities = document.getElementsByClassName("quantity");
+  var salePrices = document.getElementsByClassName("sale-price");
+  var totalPrices = document.getElementsByClassName("total-price");
+
+  for (var i = 0; i < quantities.length; i++) {
+    var quantity = quantities[i].value;
+    var salePrice = salePrices[i].value;
+    var totalPrice = quantity * salePrice;
+
+    totalPrices[i].textContent = totalPrice;
+  }
+}
+</script>
+</head>
+<body>
+	<%@ include file="../common/header.jsp" %> 
+	<div class="cart-container">
+		<h2>장바구니</h2>
+		<p/>
+		<div >
+			<table class="table table-hover">
+				<tr>
+					<th><input type="checkbox"/></th>
+					<th>상품명</th>
+					<th>수량</th>
+					<th>판매가(할인)</th>
+					<th>합계금액</th>
+				</tr>
+				<c:forEach var="list" items="${list }">
+				<tr>
+					<td><input type="checkbox"/></td>
+					<td>${list.PRDCTNM }</td>
+					<td><input type="number" min="1" max ="100" value="1" class="quantity" oninput="calculateTotalPrice()"/></td>
+					<td><span style=" text-decoration: line-through; color:red;">${list.REALPRICE} </span><input type="text" class="sale-price" value="${list.SALEPRICE}" /> </td>
+					<td class="total-price">${list.SALEPRICE }</td>
+				</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
