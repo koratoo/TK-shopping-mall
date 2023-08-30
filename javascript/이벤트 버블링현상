@@ -1,0 +1,17 @@
+상황 : 큰 div태그를 누르면 페이지가 이동되고 그 안에 있는 버튼을 클릭하면 ajax가 동작하는데
+버튼을 눌렀을때 페이지 이동과 ajax동작이 같이 이뤄지는 문제 상황이다.
+
+-----------------------------------------------------------------------------------------
+
+putItemsIntoCart 함수가 호출되었을 때 <div class="top-sales-item">의 onclick 이벤트가 동작하지 않도록 하려면, 
+이벤트 버블링을 중지해야 합니다. 이벤트 버블링은 특정 HTML 요소에서 이벤트가 발생했을 때 해당 요소의 부모 요소들로 이벤트가 전파되는 현상입니다.
+
+JavaScript에서는 event.stopPropagation() 메서드를 사용하여 이벤트 버블링을 중지할 수 있습니다.
+
+다음과 같이 코드를 수정하면 원하는 기능을 구현할 수 있습니다:
+
+<button id="cart_btn" onclick="event.stopPropagation(); putItemsIntoCart();" data-product-no="${bestitem.PRDCTNO}"><img src="../resources/img/icon/cart.png"></button>
+위 코드에서 event.stopPropagation(); 부분이 추가되었습니다. 이렇게 하면 "장바구니에 담기" 버튼(#cart_btn)을 클릭했을 때 putItemsIntoCart() 함수만 실행되고,
+부모 요소인 <div class="top-sales-item">의 onclick 이벤트는 동작하지 않게 됩니다.
+
+참고로 위 코드에서 사용된 event 객체는 자바스크립트에서 자동으로 제공하는 객체로, 현재 발생한 이벤트에 대한 정보와 메서드를 담고 있습니다.
