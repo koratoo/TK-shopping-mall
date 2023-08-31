@@ -5,3 +5,6 @@
 
 JavaScript의 경우, 문서가 완전히 로드된 후(window.onload)에 특정 요소를 숨기는 코드가 실행되므로, 
 이 시점 사이에 잠시 해당 요소가 보일 수 있습니다. 이런 경우, 해당 요소를 처음부터 숨겨두거나 DOMContentLoaded 이벤트에서 처리하는 것이 좋습니다.
+
+(예시)
+<ul class="all-menu-active" style="display:none">
