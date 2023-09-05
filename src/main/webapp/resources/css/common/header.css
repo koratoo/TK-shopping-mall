@@ -1,0 +1,114 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin:0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+#header {
+  background-color: #fff;
+}
+
+.header-top {
+  padding: 10px 0;
+  border-bottom: solid thin #d3d3d3;
+}
+
+.header-middle {
+   font-family: 'OTWelcomeRA';
+   padding: 20px 0; 
+   border-bottom: solid thin #d3d3d3; 
+} 
+
+#main-nav ul.header-bottom { 
+   padding:20px;  
+} 
+
+#header a {
+   text-decoration:none;  
+   color:black;   
+} 
+
+#main-nav ul.header-bottom li { 
+   display:inline-block;  
+   margin-right:10px;  
+}
+
+.header-bottom,.header-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-top .container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-top .container a{
+	font-size:5px;
+	margin-left:10px;
+}
+
+.header-bottom {
+	font-size: 18px;    
+	font-family: 'OTWelcomeRA';
+
+}
+
+.header-bottom a{
+	margin-left:30px;
+}
+
+.all-menu-btn{
+	background-color:#fff;
+	font-size:18px;
+	border:1px solid #fff;
+}
+.all-menu-btn:hover{
+	cursor:pointer;
+}
+
+.all-menu-active{
+	display:flex;
+	justify-content: center;
+	z-index: 9998; 
+    position: absolute; 
+    background:#fff;
+    margin: 0 120px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+    
+    border-top-right-radius:-30px;
+}
+.all-menu-active li{
+	width:160px;
+	margin-right:10px;
+	list-style-type: none;
+	text-align:center;
+}
+
+.all-menu-active li>img{
+	border:none;
+	width:140px;
+	height:140px;
+}
+
+.all-menu-active li>img:hover{
+	cursor:pointer;
+	border-radius:10px;
+	border:10px solid lightgreen;
+}
+
+.header-bottom a:hover{
+	border-bottom:2px solid black;
+}
