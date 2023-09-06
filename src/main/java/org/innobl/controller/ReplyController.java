@@ -75,4 +75,11 @@ public class ReplyController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	@GetMapping(value = "/show/{rno}" ,
+			produces = {MediaType.APPLICATION_XML_VALUE,
+			MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<ReplyVO>> getLv1Replyshow(@PathVariable String rno){
+		
+		return new ResponseEntity<>(replyService.getLv1Repl(rno),HttpStatus.OK);
+	}
 }

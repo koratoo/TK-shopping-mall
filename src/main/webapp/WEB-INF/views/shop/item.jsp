@@ -19,6 +19,7 @@
 	$(document).ready(function(){
 	var prdctValue = '<c:out value="${item.PRDCTNO}"/>';
 	var replyUL = $(".chat");
+	var commentUL = $(".commentUL");
 	
 	showList(1);
 	function showList(page) {
@@ -33,37 +34,20 @@
 				str += "<div><div class='header'><strong class='primary-font'>" + list[i].replyer + "</strong>";
 				str += "<small class ='pull-right text-muted'>" + list[i].replydate + "</small></div>";
 				str += "<p>" + list[i].reply + "</p>";
-				str += "<span style='color:gray;font-size:12px; margin:10px;'>댓글보기</span> ";
-	            str += "<span style='color:gray;font-size:12px; margin:10px;'>댓글쓰기</span>";
+				str += "<button style=font-size:12px; margin:10px;' id='showReply'>댓글보기</button> ";
+	            str += "<button style=font-size:12px; margin:10px;' id='addReply'>댓글쓰기</button>";
 
-	            // 대댓글 출력
-	            if (list[i].repllv > 0) {
-	                str += getReplyComments(list, list[i].rno);
-	            }
 
 				str += "</div></li>"
 			}
 			replyUL.html(str);
 	    });
+	
 
-	    function getReplyComments(list, parentRno) {
-	        var replyStr = "";
-	        for (var j = 0; j < list.length; j++) {
-	            if (list[j].repllv > 0 && list[j].parentRno === parentRno) { // 대댓글인 경우
-	                replyStr += "<ul>"; // 대댓글 목록 시작 태그
-	                replyStr += "<li>" + list[j].replyer + ": " + list[j].reply + "</li>"; // 대댓글 내용 출력
-
-	                // 재귀적으로 다른 대댓들 찾아서 출력
-	                replyStr += getReplyComments(list, list[j].rno);
-
-	                replyStr += "</ul>"; // 대댓목록 종료 태그
-	            }
-	        }
-	        return replyStr;
-	    }
-	}
-
-	  
+	   
+	}//show list end
+	
+	    
 		$("#modalRegisterBtn").on("click",function(e){
 			var reply ={
 					reply : $("#reply").val(),
@@ -75,8 +59,42 @@
 				location.reload(true);
 			})
 		});
+	
+		$(document).on("click", "#showReply", function(e) {
+			var rno = $(this).closest('li.card').data('rno');
+		    replyService.show(rno, function(data){
+		    	var str = "";
+				if (data == null || data.length == 0) {
+					commentUL.html("");
+					return;
+				}
+				for (var i = 0, len = data.length || 0; i < len; i++) {
+					str += "<li class='card' data-rno='" + data[i].rno + "'>";
+					str += "<div><div class='header'><strong class='primary-font'>" +" ㄴ " +data[i].replyer + "</strong>";
+					str += "<small class ='pull-right text-muted'>" +data[i].replydate + "</small></div>";
+					str += "<p>"+ data[i].reply + "</p>";
+					str += "<button style=font-size:12px; margin:10px;' id='hideReply'>댓글접기</button> ";
+
+					str += "</div></li>"
+				}
+				commentUL.html(str);
+		    }, function(err){
+		       console.error(err);
+		    });
+		});
+		
+
+		$(document).on("click", "#hideReply", function(e) {
+			commentUL.html("");
+
+		});
+		
+		$(document).on("click", "#addReply", function(e) {
+		    alert('add!');
+		});
 	});
 	
+
 </script>
 <style>
 	body {
@@ -125,7 +143,7 @@
     	padding:10px;
     	justify-content: space-between;
     }
-    .header, .chat p{
+    .header, .chat p, .commentUL p{
     	padding:10px;
     }
     #addReplyBtn,#repl-comment{
@@ -179,6 +197,7 @@
 			<!-- /.panel-heading -->
 			<div class= "panel-body col-lg-10">
 				<ul class = "chat"></ul>				
+				<ul class = "commentUL"></ul>				
 			</div>
 			<div class="panel-footer"></div>
 		</div>
@@ -217,6 +236,7 @@
     </div><!-- End of Comment Modal -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

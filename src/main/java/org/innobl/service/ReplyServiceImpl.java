@@ -40,4 +40,9 @@ public class ReplyServiceImpl implements ReplyService{
 		return replyMapper.getListWithPaging(cri, PRDCTNO);
 	}
 
+	@Override
+	public List<ReplyVO> getLv1Repl(String rno) {
+		return replyMapper.getLv1Repl(rno);
+	}
+
 }

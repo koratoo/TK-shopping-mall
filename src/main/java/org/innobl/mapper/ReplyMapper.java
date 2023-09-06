@@ -15,5 +15,7 @@ public interface ReplyMapper {
 	public List<ReplyVO> getListWithPaging(
 			@Param("cri") Criteria cri,
 			@Param("PRDCTNO") String PRDCTNO);
+	
+	public List<ReplyVO> getLv1Repl(String rno);
 			
 }

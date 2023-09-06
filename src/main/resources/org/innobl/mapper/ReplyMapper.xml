@@ -11,7 +11,7 @@
   			SELECT 
   				* 
   			FROM TBL_REPLY 
-  			WHERE RNO = #{RNO}
+  			WHERE RNO = #{RNO} AND REPLLV = 0
   		</select>
   		
   		<delete id="delete">
@@ -35,8 +35,15 @@
   			FROM 
   				TBL_REPLY
   			WHERE PRDCTNO=#{PRDCTNO}
+  				AND REPLLV = 0
   			ORDER BY RNO ASC
   			
+  		</select>
+  		<select id="getLv1Repl" resultType="org.innobl.domain.vo.ReplyVO">
+  			SELECT 
+  				* 
+  			FROM TBL_REPLY 
+  			WHERE RNO = #{RNO} AND REPLLV = 1
   		</select>
   </mapper>
  

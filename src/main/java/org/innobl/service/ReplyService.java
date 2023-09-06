@@ -12,4 +12,6 @@ public interface ReplyService {
 	public int remove(String rno);
 	public int modify(ReplyVO reply);
 	public List<ReplyVO> getList(Criteria cri,String PRDCTNO);
+	public List<ReplyVO> getLv1Repl(String rno);
+
 }

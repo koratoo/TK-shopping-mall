@@ -38,8 +38,24 @@ var replyService = (function () {
     });
   }
 
+  function show(rno, callback, error) {
+    $.getJSON("/replies/show/" + rno + ".json", function (data) {
+      console.log(data);
+      if (callback) {
+        callback(data);
+      }
+    }).fail(function (xhr, status, err) {
+      console.log(data);
+
+      if (error) {
+        error(err);
+      }
+    });
+  }
+
   return {
     add: add,
     getList: getList,
+    show: show,
   };
 })();
