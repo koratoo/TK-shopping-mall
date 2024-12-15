@@ -15,6 +15,12 @@
 ![image](https://github.com/user-attachments/assets/22a5bfc0-065e-4e6a-8418-fab9c4dffa4b)<br>
 영상 : https://blog.naver.com/kuma9009/223197805185
 
+### 상품등록 페이지
+![image](https://github.com/user-attachments/assets/44957c57-5385-4ff4-b2c2-b05d225daa02)
+![image](https://github.com/user-attachments/assets/9cea2cb2-a9d6-454c-bb5a-879e82a8560c)
+
+### 댓글, 대댓글
+![image](https://github.com/user-attachments/assets/e7a9b22f-069f-4a59-9466-9808748f89ca)
 
 
 ## 테이블구조
