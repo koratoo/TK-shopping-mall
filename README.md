@@ -72,7 +72,3 @@ Oracle Database를 사용하여 다음과 같은 테이블 구조를 설계했�
 - Spring Framework와 MyBatis의 활용법 학습
 - Oracle Database와의 연동 및 데이터 처리 경험
 
----
-
-위 내용은 필요에 따라 수정하거나 추가할 수 있습니다.  
-더 멋진 `README.md` 작성에 대한 도움이 필요하면 언제든 알려주세요! 😊
