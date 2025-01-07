@@ -1,7 +1,7 @@
 ### Spring Boot ReplyController 클래스 설명
 
 이번 글에서는 Spring Boot 기반으로 작성된 `ReplyController` 클래스의 구조와 기능에 대해 알아보겠습니다. 
-이 클래스는 댓글(Reply) 관리 기능을 담당하며, RESTful API를 통해 다양한 작업을 수행합니다.
+이 클래스는 댓글(Reply) 관리 기능을 담당하며, RESTful API를 통해 다양한 작업을 수행합니다. (전체 코드는 하단에 있습니다.)
 
 ---
 
